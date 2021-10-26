@@ -1,6 +1,4 @@
 
-// TODO move bytes that used to be at checksum position to the end
-
 #include <stdio.h>
 #include <inttypes.h> // same
 #include <stdint.h>   // same
