@@ -3,6 +3,7 @@
 #include <inttypes.h> // same
 #include <stdint.h>   // same
 #include <stdlib.h>
+#include <assert.h>
 
 #define DEBUG
 
@@ -53,6 +54,9 @@ uint16_t ham_encode(uint16_t in){
 		cor |= (bit << offset);
 	}
 
+	//assert((cor&1) == 0);
+	//cor >>= 1;
+
 	return cor;
 }
 
@@ -83,7 +87,7 @@ int main(void){
 	uint16_t code_out = ham_encode(code_in);
 	printf("out: %x\n", code_out);
 
-	code_out ^= 1 << 11; // see ? it works; you can do the same with any field (as long as you do it once)
+	code_out ^= 1 << 13; // see ? it works; you can do the same with any field (as long as you do it once)
 	uint16_t code_checked = ham_decode(code_out);
 	printf("pas: %d\n", code_checked);
 
