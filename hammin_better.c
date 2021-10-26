@@ -62,7 +62,7 @@ uint16_t ham_encode(uint16_t in){
 
 uint16_t ham_decode(uint16_t in){
 	uint16_t cor = in;
-	uint8_t err = get_ham_hash(in);
+	uint8_t err = get_ham_hash(cor);
 	cor ^= (1<<err);
 
 	for(int i=0; i<4; ++i){
