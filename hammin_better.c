@@ -34,7 +34,7 @@ uint8_t get_ham_hash(uint16_t in){
 uint16_t ham_encode(uint16_t in){
 	UINTN_CHECK(11, in);
 
-	int16_t cor = in << 1;
+	uint16_t cor = in << 1;
 
 	for(int i=0; i<4; ++i){
 		uint16_t offset = 1 << i;
@@ -52,7 +52,7 @@ uint16_t ham_encode(uint16_t in){
 		uint16_t bit = !!(ham & (1<<i));
 		cor |= (bit << offset);
 	}
-	
+
 	return cor;
 }
 
@@ -81,7 +81,7 @@ int main(void){
 	printf("in : %d\n", code_in);
 
 	uint16_t code_out = ham_encode(code_in);
-	printf("out: %d\n", code_out);
+	printf("out: %x\n", code_out);
 
 	code_out ^= 1 << 11; // see ? it works; you can do the same with any field (as long as you do it once)
 	uint16_t code_checked = ham_decode(code_out);
